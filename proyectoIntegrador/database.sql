@@ -49,6 +49,9 @@ VALUES (DEFAULT, 'rominagimenez@email.com', 'incorrecta', 'https://us.123rf.com/
 INSERT INTO usuarios (id, email, clave, fotoDePerfil, fecha, dni, createdAt, updatedAt, deletedAt)
 VALUES (DEFAULT, 'soledadrios@email.com', 'incorrecta', 'https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200008/91087328-icono-de-perfil-de-avatar-predeterminado-para-mujer-marcador-de-posici%C3%B3n-de-foto-gris-vector-de.jpg', '2003-05-14', 42369412, DEFAULT, DEFAULT, DEFAULT);
 
+USE proyecto;
+INSERT INTO posteos (id, idUsuario, imagenPerfil, descripcionPost, createdAt, updatedAt, deletedAt)
+VALUES (DEFAULT, 2, 'https://media-cdn.tripadvisor.com/media/photo-s/1a/5e/e0/e0/londres-bella-y-espectacular.jpg', 'Hermoso lugar, espero volver pronto', DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO posteos (id, idUsuario, imagenPerfil, descripcionPost, createdAt, updatedAt, deletedAt)
 VALUES (DEFAULT, 1, 'https://images.unsplash.com/photo-1604999333679-b86d54738315?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJhbGl8ZW58MHx8MHx8fDA%3D&w=1000&q=80', 'El lugar indicado para descansar y disfrutar', DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO posteos (id, idUsuario, imagenPerfil, descripcionPost, createdAt, updatedAt, deletedAt)
@@ -67,6 +70,7 @@ INSERT INTO posteos (id, idUsuario, imagenPerfil, descripcionPost, createdAt, up
 VALUES (DEFAULT, 4,'https://www.turismonuevayork.com/wp-content/uploads/2014/09/Times-Square-Nueva-York-1024x685.jpg', 'La ciudad que nunca duerme', DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO posteos (id, idUsuario, imagenPerfil, descripcionPost, createdAt, updatedAt, deletedAt)
 VALUES (DEFAULT, 5,'https://gostudyaus.es/wp-content/uploads/2018/09/SYD_header.jpg', 'Siempre algo nuevo que explorar', DEFAULT, DEFAULT, DEFAULT);
+
 
 USE proyecto;
 INSERT INTO comentarios (id, idPost, idUsuario, comentario, createdAt, updatedAt, deletedAt)
