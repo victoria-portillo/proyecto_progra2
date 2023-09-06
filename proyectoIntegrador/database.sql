@@ -161,7 +161,7 @@ VALUES (DEFAULT, 10, 2, 'Un lugar muy divertido', DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO comentarios (id, idPost, idUsuario, comentario, createdAt, updatedAt, deletedAt)
 VALUES (DEFAULT, 10, 1, 'Saca muchas fotos', DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO comentarios (id, idPost, idUsuario, comentario, createdAt, updatedAt, deletedAt)
-VALUES (DEFAULT, 10, 4, 'Tenes que visitar el mirador, tiene las mejores vistas a la ciudadposteos', DEFAULT, DEFAULT, DEFAULT);
+VALUES (DEFAULT, 10, 4, 'Tenes que visitar el mirador, tiene las mejores vistas a la ciudad', DEFAULT, DEFAULT, DEFAULT);
 
 
 
