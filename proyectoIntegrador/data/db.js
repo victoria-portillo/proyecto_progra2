@@ -32,13 +32,4 @@ const data = {
         descripcionPost
     },
 
-
-
-
-    ]
-
-
-
-
-
-}
+ ]}
