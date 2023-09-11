@@ -5,14 +5,14 @@ const data = {
         apellido: 'Garcia',
         email:'anagarcia@email.com',
         fechaDeNacimiento: '2003-08-14',
-        fotodePerfil: '',
+        fotodePerfil: '/img/imagenUsuario.jpeg',
         clave: 'incorrecta'
     },
     posteos: [
         {
         id: 1,
         idUsuario: 2,
-        imagenPosteo: 'https://media-cdn.tripadvisor.com/media/photo-s/1a/5e/e0/e0/londres-bella-y-espectacular.jpg' ,
+        imagenPosteo: '/img/londres.jpeg' ,
         descripcionPost: 'Hermoso lugar, espero volver pronto',
         comentarios: [
             {     
@@ -33,7 +33,7 @@ const data = {
     {
         id: 2,
         idUsuario: 1,
-        imagenPosteo: 'https://images.unsplash.com/photo-1604999333679-b86d54738315?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJhbGl8ZW58MHx8MHx8fDA%3D&w=1000&q=80' ,
+        imagenPosteo: '/img/asia.jpeg' ,
         descripcionPost: 'El lugar indicado para descansar y disfrutar',
         comentarios: [
             {     
@@ -54,7 +54,7 @@ const data = {
     {
         id: 3,
         idUsuario: 3,
-        imagenPosteo: 'https://cloudfront-eu-central-1.images.arcpublishing.com/prisa/NJDJYFIMIVJVRELG6XDL6KCUZI.jpg'  ,
+        imagenPosteo: '/img/europa.jpeg'  ,
         descripcionPost: 'Una ciudad llena de magia',
         comentarios: [
             {     
@@ -75,7 +75,7 @@ const data = {
     {
         id: 4,
         idUsuario: 4,
-        imagenPosteo:'https://media.istockphoto.com/id/1145450965/es/foto/isla-de-santorini-grecia.jpg?s=612x612&w=0&k=20&c=hlhoRMTnz1aURQUzNx5wKYg1jnWYcbPjv3cjpvmnCBo=',
+        imagenPosteo:'/img/grecia.jpeg',
         descripcionPost: 'Ideal para una escapada de fin de semana' ,
         comentarios: [
             {     
@@ -96,7 +96,7 @@ const data = {
     {
         id: 5,
         idUsuario: 5,
-        imagenPosteo: 'https://a.cdn-hotels.com/gdcs/production163/d1338/2c6deb71-c305-4c1b-a7f7-505f127da244.jpg', 
+        imagenPosteo: '/img/berlin.jpeg', 
         descripcionPost: 'LLeno de tradiciones y mistica' ,
         comentarios: [
             {     
@@ -117,7 +117,7 @@ const data = {
     {
         id: 6,
         idUsuario: 2,
-        imagenPosteo: 'https://www.nuevatribuna.es/media/nuevatribuna/images/2018/11/19//2018111912351384823.jpg', 
+        imagenPosteo: '/img/alemania.jpeg', 
         descripcionPost: 'Los mejores paisajes de tu vida',
         comentarios: [
             {     
@@ -138,7 +138,7 @@ const data = {
     {
         id: 7,
         idUsuario: 3,
-        imagenPosteo: 'https://cdn.aarp.net/content/dam/aarp/travel/Domestic/2021/12/1140-oahu-hero-esp.jpg', 
+        imagenPosteo: '/img/playita.jpeg', 
         descripcionPost: 'Momento soñado',
         comentarios: [
             {     
@@ -159,7 +159,7 @@ const data = {
     {
         id: 8,
         idUsuario: 1,
-        imagenPosteo: 'https://estaticos-cdn.prensaiberica.es/clip/8d0cf829-3c66-4191-a454-94e3585c6284_alta-aspect-ratio_default_0.jpg', 
+        imagenPosteo: '/img/japon.jpeg', 
         descripcionPost: 'Una cultura totalmente diferente' ,
         comentarios: [
             {     
@@ -180,7 +180,7 @@ const data = {
     {
         id: 9,
         idUsuario: 4,
-        imagenPosteo: 'https://www.turismonuevayork.com/wp-content/uploads/2014/09/Times-Square-Nueva-York-1024x685.jpg' ,
+        imagenPosteo: '/img/nuevaYork.jpeg' ,
         descripcionPost:'La ciudad que nunca duerme',
         comentarios: [
             {     
@@ -201,7 +201,7 @@ const data = {
     {
         id: 10,
         idUsuario: 5,
-        imagenPosteo: 'https://gostudyaus.es/wp-content/uploads/2018/09/SYD_header.jpg', 
+        imagenPosteo: '/img/canada.jpeg', 
         descripcionPost: 'Siempre algo nuevo que explorar',
         comentarios: [
             {     
