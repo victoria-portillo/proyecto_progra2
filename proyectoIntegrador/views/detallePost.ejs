@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
 
 <%- include('./partials/head') %>
-
-<body>
-    <%- include('./partials/header') %>
+<%- include('./partials/header') %>
 
     <main>
         <div class="post-detail container">
             <section class="center main-content post">
+                <% for (let i=0; i < listaId.length; i++) { %>
                 <div class="info-usuario">
-                    <img src="https://via.placeholder.com/40" alt="">
-                    <p><a href="detalleUsuario.html">Nombre de usuario</a></p>
+                    <img src="img/imagenUsuario.jpeg" alt="imagen Usuario">
+                    <p><a href="/users/detalleUsuario">Nombre de usuario</a></p>
                 </div>
-                <img class="photo" src="https://via.placeholder.com/500x600" alt="">
+                
+                <img src="<%=listaId[i].imagenPosteo %>" alt="Paisajes">
             </section>
             <section class="right">
                 <h4>Comentarios</h4>
+                <% for(let j=0; j < listaId[i].comentarios.length; j++){%>
                 <section class="comments">
                     <form action="" class="comment-form">
                         <input type="text" class="input" placeholder="Agregar comentario">
@@ -24,60 +23,21 @@
                     </form>
                     <div>
                         <article class="comment">
-                            <img src="https://via.placeholder.com/40" alt="">
+                            <img src="img/imagenUsuario.jpeg" alt="imagen Usuario">
                             <section class="content">
-                                <a class="user" href="detalleUsuario.html">Nombre</a>
-                                <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aspernatur temporibus maxime voluptas</span>
+                                <a class="user" href="/users/detalleUsuario"> <%=listaId[i].comentarios[j].usuario%></a>
+                                <span><%=listaId[i].comentarios[j].comentario%></span>
                             </section>
                         </article>
-                        <article class="comment">
-                            <img src="https://via.placeholder.com/40" alt="">
-                            <section class="content">
-                                <a class="user" href="detalleUsuario.html">Nombre</a>
-                                <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aspernatur temporibus maxime
-                                    voluptas</span>
-                            </section>
-                        </article>
-                        <article class="comment">
-                            <img src="https://via.placeholder.com/40" alt="">
-                            <section class="content">
-                                <a class="user" href="detalleUsuario.html">Nombre</a>
-                                <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aspernatur temporibus maxime
-                                    voluptas</span>
-                            </section>
-                        </article>
-                        <article class="comment">
-                            <img src="https://via.placeholder.com/40" alt="">
-                            <section class="content">
-                                <a class="user" href="detalleUsuario.html">Nombre</a>
-                                <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aspernatur temporibus maxime
-                                    voluptas</span>
-                            </section>
-                        </article>
-                        <article class="comment">
-                            <img src="https://via.placeholder.com/40" alt="">
-                            <section class="content">
-                                <a class="user" href="detalleUsuario.html">Nombre</a>
-                                <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aspernatur temporibus maxime
-                                    voluptas</span>
-                            </section>
-                        </article>
-                        <article class="comment">
-                            <img src="https://via.placeholder.com/40" alt="">
-                            <section class="content">
-                                <a class="user" href="detalleUsuario.html">Nombre</a>
-                                <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aspernatur temporibus maxime
-                                    voluptas</span>
-                            </section>
-                        </article>
+                       
                     </div>
                 </section>
             </section>
+            <%}%>
+            <% } %>
         </div>
     </main>
 
     <%- include('./partials/footer') %> 
 
-</body>
 
-</html>

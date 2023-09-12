@@ -113,8 +113,10 @@ main {
     align-items: center;
 }
 .info-usuario img {
-    margin-right: 10px;
-    border-radius: 90%;
+    margin-right: 5px;
+    border-radius: 40%;
+    height: 40px;
+    width: 40px;
     padding: 1px;
     border: 2px solid chocolate;
 }
@@ -177,7 +179,8 @@ main {
     max-width: 64%;
 }
 .post-detail .photo {
-    width: 100%;
+    height: 50px;
+    width: 50px;
 }
 .post-detail .right {
     width: 34%;
