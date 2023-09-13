@@ -1,14 +1,14 @@
 
 <%- include('./partials/head') %>
-<%- include('./partials/headerLogeado') %>
+<%- include('./partials/header') %>
 
     <main>
         <div class="post-detail container">
             <section class="center main-content post">
                 <% for (let i=0; i < listaId.length; i++) { %>
                 <div class="info-usuario">
-                    <img src="img/imagenUsuario.jpeg" alt="imagen Usuario">
-                    <p><a href="/users/detalleUsuario">Nombre de usuario</a></p>
+                    <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
+                    <p><a href="/users/detalleUsuario">Laura Martinez</a></p>
                 </div>
                 
                 <img src="<%=listaId[i].imagenPosteo %>" alt="Paisajes">
@@ -17,13 +17,9 @@
                 <h4>Comentarios</h4>
                 <% for(let j=0; j < listaId[i].comentarios.length; j++){%>
                 <section class="comments">
-                    <form action="" class="comment-form">
-                        <input type="text" class="input" placeholder="Agregar comentario">
-                        <button type="submit">Comentar</button>
-                    </form>
-                    <div>
+            
                         <article class="comment">
-                            <img src="img/imagenUsuario.jpeg" alt="imagen Usuario">
+                            <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
                             <section class="content">
                                 <a class="user" href="/users/detalleUsuario"> <%=listaId[i].comentarios[j].usuario%></a>
                                 <span><%=listaId[i].comentarios[j].comentario%></span>
@@ -34,6 +30,11 @@
                 </section>
             </section>
             <%}%>
+            <form action="" class="comment-form">
+                <input type="text" class="input" placeholder="Agregar comentario">
+                <button type="submit">Comentar</button>
+            </form>
+            <div>
             <% } %>
         </div>
     </main>

@@ -1,6 +1,7 @@
 /* Generics */
 *{
     box-sizing: border-box;
+    
 }
 ul, ol {
     padding: 0;
@@ -28,7 +29,15 @@ header {
     left: 0;
     right: 0;
     background-color: #ACA7DF;
+
 }
+
+.navbar-left{
+
+margin: 10px;
+
+}
+
 .main-nav {
     display: flex;
     flex-wrap: wrap;
@@ -168,7 +177,7 @@ main {
 }
 
 /* Post detail */
-.post-detail {
+.post-detail .container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -194,7 +203,6 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: flex-start;
     margin-bottom: 20px;
 }
 .comment img {
@@ -202,6 +210,7 @@ main {
     border-radius: 90%;
     padding: 1px;
     border: 2px solid chocolate;
+    width: 30px;
 }
 .comment .text {
     font-size: 12px;
@@ -217,6 +226,14 @@ main {
     flex-direction: column;
     justify-content: space-between;
     border-radius: 5px;
+    width: 40%
+}
+.right{
+
+    display: flex;
+    flex-direction: column;
+
+
 }
 .comment-form input {
     margin-bottom: 10px;

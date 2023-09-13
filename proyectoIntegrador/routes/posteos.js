@@ -3,7 +3,7 @@ const router = express.Router()
 const controller = require('../controllers/posteosController')
 
 
-router.get('/principal', controller.index)
+
 router.get('/detalle/:id', controller.detalle)
 router.get('/agregar', controller.agregarPosteo)
 router.get('/busqueda', controller.buscarPosteo)
