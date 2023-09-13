@@ -27,7 +27,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background-color: #fff;
+    background-color: #ACA7DF;
 }
 .main-nav {
     display: flex;
@@ -249,19 +249,23 @@ main {
 }
 .user-detail .bottom{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0 40px;
     width: 70%;
 }
+
+
 .user-detail .post{
     width: 200px;
     padding: 5px 5px 20px 5px;
     border-radius: 0;
+    
 }
 .user-detail .post img{
     width: 100%;
+    
 }
 .user-detail .top {
     display: flex;
@@ -288,6 +292,7 @@ main {
 .profile {
     border-radius: 90%;
     border: 2px solid chocolate;
+    width: 60px;
 }
 
 .user-detail .meta {
