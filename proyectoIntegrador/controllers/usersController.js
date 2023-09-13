@@ -2,26 +2,39 @@ const data = require('../data/db')
 
 const controller = {
   login: function (req, res) {
-    res.render('login')
+    res.render('login',{
+      userLogueado: false
+    })
   },
 
   registro: function (req, res) {
-    res.render('registracion')
+    res.render('registracion',
+    {
+         
+      userLogueado: false
+
+})
   },
 
   miPerfil: function (req, res) {
     res.render('miPerfil', {
-      posteos: data.posteos
+      posteos: data.posteos,
+      userLogueado: true
     })
   },
 
   perfilEditar: function (req, res) {
-    res.render('editarPerfil')
+    res.render('editarPerfil', {
+         
+      userLogueado: true
+
+})
   },
 
   usuarioDetalle: function (req, res) {
     res.render('detalleUsuario', {
-      posteos: data.posteos
+      posteos: data.posteos,
+      userLogueado: true
     })
   }
 
