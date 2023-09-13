@@ -3,18 +3,40 @@
 <%- include('./partials/head') %>
 
 
-    <%- include('./partials/header') %>
+    <%- include('./partials/headerLogeado') %>
 
 
     <main>
         <section class="center main-content">
         <h1>Editar perfil</h1>
-        <p>Crear el formulario para modificar los datos de perfil de un usuario.</p>
-        </section>
+
+                <form action="/users/editarPerfil" method="get">
+                    <div>
+                        <input type="text"  name="nombreUsuario" placeholder="Usuario">
+                    </div>
+                    <div>
+                        <input type="email"  name= "email" placeholder="Email">
+                    </div>
+                    <div>
+                        <input type="date" name= "fechaNacimiento" placeholder="Fecha de nacimieno">
+                    </div>
+                    <div>
+                        <input type="number" name= "dni" placeholder="Dni">
+                    </div>
+                    <div>
+                        <input type="password"   name= "contrasenia" placeholder="Password">
+                    </div>
+                    <div>
+                        <input type="text"   name= "fotoPerfil" placeholder="Foto de Perfil">
+                    </div>
+                <div>
+
+                    <input type="submit" value="Guardar modificaciones">
+                </div>
+                </form>
+            
+    </section>
     </main>
     <%- include('./partials/footer') %> 
 
 
-</body>
-
-</html>

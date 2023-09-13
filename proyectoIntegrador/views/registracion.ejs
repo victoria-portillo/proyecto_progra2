@@ -2,7 +2,7 @@
 
 <%- include('./partials/head') %>
 
-<%- include('./partials/header') %>
+<%- include('./partials/headerDeslogeado') %>
 			
         
            
@@ -16,7 +16,7 @@
             <section class="center main-content">
             <h1>Registrarte</h1>
 
-            <form action="/users/registrar" method="post">
+            <form action="/users/registrar" method="get">
                 <div>
                     <input type="text"  name= "nombreUsuario"  placeholder="nombre de usuario">
                 </div>
@@ -35,12 +35,10 @@
                 <div>
                     <input type="text" name= "fotoPerfil" placeholder="foto de perfil">
                 </div>
-                <button>
-                    <!-- Pregunta si tiene que redirigir el boton  -->
-                    Registrarme
-                
-                </button>
+                <div>
 
+                    <input type="submit" value="Registrarse">
+                </div>
             </form>    
             
             <a href="/users/login">Iniciar sesion</a>

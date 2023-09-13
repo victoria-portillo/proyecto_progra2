@@ -1,7 +1,7 @@
 
 <%- include('./partials/head') %>
 
-    <%- include('./partials/header') %>
+    <%- include('./partials/headerLogeado') %>
 
     <main>
         <section class="center main-content">
@@ -9,7 +9,7 @@
        
 
 
-                <form action="/posteos/agregar" method="post">
+                <form action="/posteos/agregar" method="get">
                     <div>
                         <input type="text" name="imagenPosteo" placeholder="Foto del Posteo">
                     </div>
@@ -17,8 +17,10 @@
                         <input type="text" name="descripcionPosteo" placeholder="Descripcion del posteo">
                     </div>
                     <button>
-                    <a href="/users/perfil">Agregar Post</a>
-                    </button>
+                        <div>
+
+                            <input type="submit" value="Agregar post">
+                        </div>                    </button>
                 </form>
 
 
