@@ -1,43 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+
 
 <%- include('./partials/head') %>
 
+<%- include('./partials/header') %>
+			
+        
+           
+        <section>
 
-<body>
-    <header class="main-header">
-        <nav class="main-nav">
-            <div class="navbar-left">
-                <h2 class="logo"><a href="index.html">Travelgram</a></h2>
-            </div>
-            <div class="navbar-center">
-                <form action="" class="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="search" class="search-input" placeholder="Buscar...">
-                </form>
-            </div>
-            <div class="navbar-right">
-                <ul class="menu">
-                    <li><a href="registracion.html">Registro</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
-                    <li><a href="agregarPost.html"><i class="fa-regular fa-square-plus"></i></a></li>
-                    <li><a href="miperfil.html"><i class="fa-regular fa-user"></i></a></li>
-                    <li><i class="fa-solid fa-arrow-right-from-bracket"></i></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+        <a href="/users/login">Iniciar sesion</a>
 
-    <main>
-        <section class="center main-content">
-        <h1>Regsitrate</h1>
-        <p>Crear el formulario para registrar un nuevo usuario.</p>
         </section>
-    </main>
 
-    <%- include('./partials/footer') %> 
+        <main>
+            <section class="center main-content">
+            <h1>Registrarte</h1>
 
-</body>
+            <form action="/users/registrar" method="post">
+                <div>
+                    <input type="text"  name= "nombreUsuario"  placeholder="nombre de usuario">
+                </div>
+                <div>
+                    <input type="email"  name= "email" placeholder="email">
+                </div>
+                <div>
+                    <input type="date"  name= "fechaNacimiento" placeholder="fecha de nacimieno">
+                </div>
+                <div>
+                    <input type="number" name= "dni" placeholder="dni">
+                </div>
+                <div>
+                    <input type="password" name= "contrasenia" placeholder="contraseña">
+                </div>
+                <div>
+                    <input type="text" name= "fotoPerfil" placeholder="foto de perfil">
+                </div>
+                <button>
+                    <!-- Pregunta si tiene que redirigir el boton  -->
+                    Registrarme
+                
+                </button>
 
-</html>
+            </form>    
+            
+            <a href="/users/login">Iniciar sesion</a>
+
+          </section>
+        </main>
+
+	
+
+
+<%- include('./partials/footer') %>
