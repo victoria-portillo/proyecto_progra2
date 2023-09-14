@@ -99,6 +99,7 @@ main {
     align-items: center;
     padding: 100px 0;
     min-height: 600px;
+    
 }
 
 .main-content {
@@ -112,6 +113,7 @@ main {
     border-radius: 10px;
     color: #777;
     margin-bottom: 20px;
+
 }
 .post-body img {
     width: 100%;
@@ -127,6 +129,7 @@ main {
     flex-direction: row;
     justify-content:flex-start;
     align-items: center;
+
 }
 .info-usuario img {
     margin-right: 5px;
@@ -288,7 +291,7 @@ main {
     
 }
 .user-detail .post img{
-    width: 100%;
+    width: 200%;
     
 }
 .user-detail .top {
