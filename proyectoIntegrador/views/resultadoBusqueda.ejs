@@ -8,8 +8,16 @@
     <main>
         <section class="center main-content">
         <h1>Resultados de búsqueda.</h1>
-       
-
+     			
+        <section class="bottom">
+            <article class="post">
+                <% for(let i=5; i < posteos.length; i++){%>
+                <a href="/posteos/detalle/<%=posteos[i].id%>">
+                    <img class="imagen-post" src=<%=posteos[i].imagenPosteo%> >
+                </a>
+                <%}%>
+            </article>
+        </section>
               
  <%- include('./partials/footer') %>
 

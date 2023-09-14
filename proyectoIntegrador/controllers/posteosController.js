@@ -34,8 +34,11 @@ const controller = {
     },
     buscarPosteo: function(req, res){
         res.render('resultadoBusqueda', {
-         
-            userLogueado: true
+            nombre: req.query.posteo,
+            
+            userLogueado: true,
+            posteos: datos.posteos,
+
       
       })
     }
