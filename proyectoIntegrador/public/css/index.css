@@ -75,13 +75,20 @@ margin: 10px;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
+
 .menu li {
     margin: 0 8px;
 }
 .menu i {
     font-size: 25px;
 }
+
+.fa-arrow-right-from-bracket {
+    margin-top: 15px;
+}
+
 
 /* Main */
 main {
@@ -389,4 +396,3 @@ main {
     max-width: 100%; /* Ajustar el tamaño máximo de las imágenes al contenedor */
     height: auto; /* Mantener la proporción de aspecto */
   }
-  
