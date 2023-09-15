@@ -6,19 +6,21 @@
 
 
     <main>
-        <section class="center main-content">
-        <h1>Resultados de búsqueda.</h1>
-     			
+        <div class="user-detail container" >
+        <h1>Resultados de búsqueda</h1>
         <section class="bottom">
+            <% for(let i=0; i < posteos.length; i++){%>
             <article class="post">
-                <% for(let i=5; i < posteos.length; i++){%>
-                <a href="/posteos/detalle/<%=posteos[i].id%>">
-                    <img class="imagen-post" src=<%=posteos[i].imagenPosteo%> >
+                
+                    <a href="/posteos/detalle/<%=posteos[i].id%>">
+                        <img src=<%=posteos[i].imagenPosteo%> >
                 </a>
-                <%}%>
-            </article>
-        </section>
               
+            </article>
+            <%}%>
+        </section>	
+    </div>	
+        
  <%- include('./partials/footer') %>
 
 
