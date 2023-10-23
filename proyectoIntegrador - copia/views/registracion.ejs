@@ -1,0 +1,52 @@
+
+
+<%- include('./partials/head') %>
+
+<%- include('./partials/header') %>
+			
+        
+           
+        <section>
+
+        <a href="/users/login">Iniciar sesion</a>
+
+        </section>
+
+        <main>
+            <section class="center main-content">
+            <h1>Registrarte</h1>
+
+            <form action="/users/perfil" method="get">
+                <div>
+                    <input type="text"  name= "nombreUsuario"  placeholder="nombre de usuario">
+                </div>
+                <div>
+                    <input type="email"  name= "email" placeholder="email">
+                </div>
+                <div>
+                    <input type="date"  name= "fechaNacimiento" placeholder="fecha de nacimieno">
+                </div>
+                <div>
+                    <input type="number" name= "dni" placeholder="dni">
+                </div>
+                <div>
+                    <input type="password" name= "contrasenia" placeholder="contraseña">
+                </div>
+                <div>
+                    <input type="text" name= "fotoPerfil" placeholder="foto de perfil">
+                </div>
+                <div>
+
+                    <input type="submit" value="Registrarse">
+                </div>
+            </form>    
+            
+            <a href="/users/login">Iniciar sesion</a>
+
+          </section>
+        </main>
+
+	
+
+
+<%- include('./partials/footer') %>

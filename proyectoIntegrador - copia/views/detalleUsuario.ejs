@@ -1,0 +1,32 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+
+ <main>
+        <div class="user-detail container">
+            <section class="top main-content">
+                <img class="profile" src="/img/imagenUsuario.jpeg" alt="foto usuario">
+                <div class="info-usuario">
+                    <p>Mariana Araujo</p> 
+                    <a class="follow" href="">seguir</a>
+                    <ul class="meta">
+                        <li>80 post</li>
+                        <li>500 seguidores</li>
+                        <li>410 seguidos</li>
+                    </ul>
+                </div>
+            </section>
+            <section class="bottom">
+                <% for(let i=0; i < posteos.length; i++){%>
+                <article class="post">
+                    
+                        <a href="/posteos/detalle/<%=posteos[i].id%>">
+                            <img src=<%=posteos[i].imagenPosteo%> >
+                    </a>
+                  
+                </article>
+                <%}%>
+            </section>
+        </div>
+    </main>
+
+    <%- include('./partials/footer') %> 

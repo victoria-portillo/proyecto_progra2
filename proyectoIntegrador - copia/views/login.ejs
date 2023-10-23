@@ -1,0 +1,57 @@
+
+<%- include('./partials/head') %>
+
+
+    <%- include('./partials/header') %>
+
+    <main>
+        <section class="center main-content">
+        <h1>Login</h1>
+       
+                    
+            <form action="/users/perfil" method="get">
+                     <div>
+                         <input type="text" name= "email" placeholder="Email">
+                    </div>
+                    <div>
+                         <input type="password" name= "contrasenia" placeholder="contraseña">
+                    </div>
+                    <div>
+
+                    <input type="submit" value="ingresar">
+                </div>
+
+            </form>
+        
+            <p>
+             ¿Aun no tienes una cuenta?
+             <a href="/users/registrar">Crear cuenta</a>
+        
+            </p>
+        
+        
+            <%- include('./partials/footer') %> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </section>
+    </main>
+
+    <%- include('./partials/footer') %> 
+
+
+</body>
+
+</html>

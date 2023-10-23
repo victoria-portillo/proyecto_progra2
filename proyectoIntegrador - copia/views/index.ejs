@@ -1,0 +1,52 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+<main>
+  <section class="center main-content">
+      <article class="post">
+        <% for(let i=0; i < posteos.length; i++){%>
+          <div class="info-usuario ">
+              <img src="/img/imagenUsuario.jpeg" alt="usuario">
+              <h4>
+                  <a href="/users/detalleUsuario"> Laura Martinez</a>
+              </h4>
+          </div>
+          <div class="post-body">
+              <a href="/posteos/detalle/<%=posteos[i].id%>">
+                <img src=<%=posteos[i].imagenPosteo%> >
+              </a>
+          </div>
+          <ul class="post-reacciones">
+              <li>
+                  <i class="fa-regular fa-heart"></i>
+              </li>
+              <li>
+                  <i class="fa-regular fa-comment"></i>
+              </li>
+          </ul>
+         
+
+
+          <div class="post-comentarios">
+              <h4>Comentarios</h4>
+                <% for(let j=0; j < posteos[j].comentarios.length; j++){%> 
+              <ul>
+                  <li>
+                      <a href="/users/detalleUsuario"> <%=posteos[i].comentarios[j].usuario%></a>
+                      <span><%=posteos[i].comentarios[j].comentario%></span>
+                  </li>
+                  
+                  <a href="/users/detalleUsuario">Ver más...</a>
+              </ul>
+          </div>
+      </article>
+      <%}%>
+
+      <%}%>
+
+      
+<!-- Hasta aca -->
+    
+
+<%- include('./partials/footer') %> 
+
+

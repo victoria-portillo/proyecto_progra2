@@ -1,0 +1,30 @@
+
+
+<%- include('./partials/head') %>
+
+ <%- include('./partials/header') %>
+
+
+    <main>
+        <div class="user-detail container" >
+        <h1>Resultados de búsqueda</h1>
+        <section class="bottom">
+            <% for(let i=0; i < posteos.length; i++){%>
+            <article class="post">
+                
+                    <a href="/posteos/detalle/<%=posteos[i].id%>">
+                        <img src=<%=posteos[i].imagenPosteo%> >
+                </a>
+              
+            </article>
+            <%}%>
+        </section>	
+    </div>	
+        
+ <%- include('./partials/footer') %>
+
+
+
+
+
+

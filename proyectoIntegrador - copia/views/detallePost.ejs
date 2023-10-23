@@ -1,0 +1,49 @@
+<%- include('./partials/head') %>
+    <%- include('./partials/header') %>
+
+        <main>
+            <div class="post-detail container">
+                <section class="center main-content post">
+                    <div class="info-usuario">
+                        <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
+                        <p><a href="/users/detalleUsuario">Laura Martinez</a></p>
+                    </div>
+                    <% for (let i=0; i < listaId.length; i++) { %>
+                        <img class="photo" src="<%=listaId[i].imagenPosteo %>" alt="Paisajes">
+                </section>
+                <section class="right">
+                    <h4>Comentarios</h4>
+                    <section class="comments">
+                        <form action="" class="comment-form">
+                            <input type="text" class="input" placeholder="Agregar comentario">
+                            <button type="submit">Comentar</button>
+                        </form>
+                        <div>
+                            <div class="comment" >
+                        
+                                <% for(let j=0; j < listaId[i].comentarios.length; j++){%>
+                                    <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
+                                    <section>
+                                        <a class="user" href="/users/detalleUsuario">
+                                            <%=listaId[i].comentarios[j].usuario%>
+                                        </a>
+                                        <span class="text">
+                                            <%=listaId[i].comentarios[j].comentario%>
+                                        </span>
+                                    </section>
+                                    <%}%>
+                           
+                        </div>
+                    </section>
+
+
+                    <div>
+                    </div>
+
+                </section>
+                
+                <% } %>
+            </div>
+        </main>
+
+        <%- include('./partials/footer') %>

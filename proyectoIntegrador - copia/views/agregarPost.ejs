@@ -1,0 +1,32 @@
+
+<%- include('./partials/head') %>
+
+    <%- include('./partials/header') %>
+
+    <main>
+        <section class="center main-content">
+        <h1>Nuevo Post</h1>
+       
+
+
+                <form action="/users/perfil" method="get">
+                    <div>
+                        <input type="text" name="imagenPosteo" placeholder="Foto del Posteo">
+                    </div>
+                    <div>
+                        <input type="text" name="descripcionPosteo" placeholder="Descripcion del posteo">
+                    </div>
+    
+                        <div>
+
+                            <input type="submit" value="Agregar post">
+                        </div>                    
+                </form>
+
+
+        </section>
+    </main>
+
+    <%- include('./partials/footer') %> 
+
+
