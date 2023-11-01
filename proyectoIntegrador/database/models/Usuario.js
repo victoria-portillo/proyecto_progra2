@@ -5,31 +5,31 @@ module.exports = function (sequelize, dataTypes) {
     let cols = {
         id:{
             type: dataTypes.INTEGER,
-            unsigned: true,
+            
             primaryKey: true,
-            allowNull: false,
+            
             autoIncrement: true
         } ,
         email: {
             type: dataTypes.STRING,
-            allowNull: false
+            
             
         } ,
         clave: {
             type: dataTypes.STRING,
-            allowNull: false
+            
         }, 
         fotoDePerfil:{
             type: dataTypes.STRING
         } ,
         dni: {
             type: dataTypes.INTEGER,
-            allowNull: false,
-            unique: true
+            
+            
         } ,
         fecha: {
             type: dataTypes.DATE,
-            allowNull: false
+            
         } ,
         createdAt:{
             type: dataTypes.DATE,
@@ -43,7 +43,7 @@ module.exports = function (sequelize, dataTypes) {
     };
 
     let config = {
-        tableName: "Usuarios",
+        tableName: "Usuario",
         timestamps: true,
         underscored: false
     };
@@ -52,12 +52,12 @@ module.exports = function (sequelize, dataTypes) {
 
     Usuario.associate = function(models) {
         Usuario.hasMany(models.Producto , {
-            as: "productos",
-            foreignKey: "id_usuario"
+            as: "posteos",
+            foreignKey: "idUsuario"
         })
         Usuario.hasMany(models.Comentario , {
             as: "comentarios",
-            foreignKey: "id_usuario"
+            foreignKey: "idUsuario"
         })
     }
 

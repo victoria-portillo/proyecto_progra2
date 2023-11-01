@@ -5,15 +5,13 @@ module.exports = function (sequelize, dataTypes) {
     let cols = {
         id: {
             type: dataTypes.INTEGER,
-            unsigned: true,
-            allowNull: true,
+            
             autoIncrement: true,
             primaryKey: true
         },
         idUsuario: {
             type: dataTypes.INTEGER,
-            unsigned: true,
-            allowNull: true
+            
         },
         imagenPerfil: {
             type: dataTypes.STRING,
@@ -35,26 +33,27 @@ module.exports = function (sequelize, dataTypes) {
         }
     };
     let config = {
-        tableName: "Productos",
+        tableName: "Posteo",
         timestamps: true,
         underscored: false,
     };
 
-    const Producto = sequelize.define(alias,cols,config);
+    const Posteo = sequelize.define(alias,cols,config);
     //relaciones
 
-    Producto.associate = function(models) {
-        // Un perfil --> muchos comentarios
-        Producto.belongsTo(models.Usuarios , {
+    Posteo.associate = function(models) {
+        // Un perfil --> muchos posteos
+        Posteo.belongsTo(models.Usuario , {
             as: "usuario",
-            foreignKey: "id_usuario"
+            foreignKey: "idUsuario"
         }),
-        Producto.hasMany(models.Comentario , {
+         // Un posteo --> muchos comentarios
+        Posteo.hasMany(models.Comentario , {
             as: "comentarios",
-            foreignKey: "id_producto"
+            foreignKey: "idPost"
         })
     };
 
-    return Producto;
+    return Posteo;
    
 };
