@@ -50,7 +50,7 @@ module.exports = function (sequelize, dataTypes) {
             foreignKey: "idUsuario"
         }),
         // Un posteo --> muchos comentarios
-        Comentario.belongsTo(models.Producto , {
+        Comentario.belongsTo(models.Posteo , {
             as: "producto",
             foreignKey: "idPost"
         })

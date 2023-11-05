@@ -1,4 +1,4 @@
-const moduloDatos = require('../data/db')
+
 const db = require('../database/models')
 const posteos = db.Posteo;
 
@@ -14,8 +14,7 @@ index: function(req, res){
     posteos.findAll(filtro)
     .then(function(result){
         // res.send(result)
-        res.render('index', { posteosFiltro : result,
-            userLogueado: false })
+        res.render('index', { posteosFiltro : result })
     })
     .catch(function(err){
         console.log(err)

@@ -15,6 +15,11 @@ module.exports = function (sequelize, dataTypes) {
             
             
         } ,
+        nombre: {
+            type: dataTypes.STRING,
+            
+            
+        } ,
         clave: {
             type: dataTypes.STRING,
             
@@ -51,7 +56,7 @@ module.exports = function (sequelize, dataTypes) {
     const Usuario = sequelize.define(alias, cols, config);
 
     Usuario.associate = function(models) {
-        Usuario.hasMany(models.Producto , {
+        Usuario.hasMany(models.Posteo , {
             as: "posteos",
             foreignKey: "idUsuario"
         })

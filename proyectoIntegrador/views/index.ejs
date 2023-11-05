@@ -3,16 +3,17 @@
 <main>
   <section class="center main-content">
       <article class="post">
-        <% for(let i=0; i < posteos.length; i++){%>
+        <% for(let i=0; i < posteosFiltro.length; i++){%>
           <div class="info-usuario ">
               <img src="/img/imagenUsuario.jpeg" alt="usuario">
               <h4>
-                  <a href="/users/detalleUsuario"> Laura Martinez</a>
+                <a href="/users/detalleUsuario/<%= posteosFiltro[i].usuario.idUsuario%> "> Usuario: <%= posteosFiltro[i].usuario.nombre %></p></a>
+              <!-- PREGUNTAR AGREGAR NOMBRE AL MODELO USUARIO Y CAMBIAR EL .ID -->
               </h4>
           </div>
           <div class="post-body">
-              <a href="/posteos/detalle/<%=posteos[i].id%>">
-                <img src=<%=posteos[i].imagenPosteo%> >
+              <a href="/posteos/detalle/<%=posteosFiltro[i].id%>">
+                <img src="<%=posteosFiltro[i].imagenPerfil%>" alt="Imagen de <%posteosFiltro[i].descripcionPost%>"    >
               </a>
           </div>
           <ul class="post-reacciones">
@@ -28,11 +29,11 @@
 
           <div class="post-comentarios">
               <h4>Comentarios</h4>
-                <% for(let j=0; j < posteos[j].comentarios.length; j++){%> 
+                <% for(let j=0; j < posteosFiltro[j].comentarios.length; j++){%> 
               <ul>
                   <li>
-                      <a href="/users/detalleUsuario"> <%=posteos[i].comentarios[j].usuario%></a>
-                      <span><%=posteos[i].comentarios[j].comentario%></span>
+                      <a href="/users/detalleUsuario"> <%=posteosFiltro[i].comentarios[j].usuario%></a>
+                      <span><%=posteosFiltro[i].comentarios[j].comentario%></span>
                   </li>
                   
                   <a href="/users/detalleUsuario">Ver más...</a>
