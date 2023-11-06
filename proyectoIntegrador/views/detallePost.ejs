@@ -4,14 +4,14 @@
         <main>
             <div class="post-detail container">
                 <section class="center main-content post">
-                    <div class="info-usuario">
-                         
-                    </div>
-                    <% for (let i=0; i < posteo.length; i++) { %>
+                   <% for (let i=0; i < posteo.length; i++) { %>
+                        <div class="info-usuario"></div>
                         <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
                         <a href="/users/detalleUsuario/<%= posteo[i].usuario.idUsuario%> "><%= posteo[i].usuario.nombre %> 
                         </p></a>
-                        <img class="photo"  src="<%= posteo.imagenPerfil %>" alt="<%= producto.descripcionPost %>">
+                        
+                    </div>
+                    <img class="photo"  src="<%= posteo.imagenPerfil %>" alt="<%= posteo.descripcionPost %>"> 
                 </section>
                 <section class="right">
                     <h4>Comentarios</h4>

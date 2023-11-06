@@ -1,4 +1,4 @@
-const datos = require('../data/db')
+
 const db = require("../database/models");
 const op = db.Sequelize.Op
 const posteos = db.Posteo;
