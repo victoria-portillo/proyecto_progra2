@@ -35,7 +35,7 @@ module.exports = function (sequelize, dataTypes) {
         
     };
     let config = {
-        tableName: "Comentario",
+        tableName: "comentarios",
         timestamps: true,
         underscored: false,
     };
@@ -51,7 +51,7 @@ module.exports = function (sequelize, dataTypes) {
         }),
         // Un posteo --> muchos comentarios
         Comentario.belongsTo(models.Posteo , {
-            as: "producto",
+            as: "posteo",
             foreignKey: "idPost"
         })
     };

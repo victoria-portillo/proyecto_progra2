@@ -32,6 +32,7 @@ const controller = {
   },
 
   usuarioDetalle: function (req, res) {
+    
     res.render('detalleUsuario', {
       posteos: data.posteos,
       userLogueado: true

@@ -14,13 +14,16 @@ index: function(req, res){
     posteos.findAll(filtro)
     .then(function(result){
         // res.send(result)
-        res.render('index', { posteosFiltro : result })
+        res.render('index', { posteosFiltro : result, userLogueado: false
+        }, 
+        )
     })
     .catch(function(err){
         console.log(err)
     })
 
-}
+},
+
 } 
 
 module.exports = controller
