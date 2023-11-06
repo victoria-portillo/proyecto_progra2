@@ -1,29 +1,32 @@
 const datos = require('../data/db')
+const db = require("../database/models");
+const op = db.Sequelize.Op
+const posteos = db.Posteo;
+const usuario = db.Usuario;
+const comentario = db.Comentario;
+
 
 const controller = {
    
     detalle: function (req, res) {
-        const parametro = req.params.id;
-        let filtradoId = [];
-        
-     for (let i = 0; i < datos.posteos.length; i++) {
+        let id = req.params.id;
 
-            if (parametro == datos.posteos[i].id) {
-                filtradoId.push(datos.posteos[i]);
-            }
-        }
-        console.log(filtradoId)
-        if (filtradoId.length == 0) {
-            return res.send("No hay posteo con ese id: " + parametro)
-        } else {
-            return res.render('detallePost', { listaId: filtradoId,
-                userLogueado: true
+        let filtro = {
+            include: [ {association: "usuario"}, {association: "comentarios", include: [{association: "usuario"}]} ]
+        };
+
+        posteos.findByPk(id, filtro)
+            .then(function(result) {
+                if (result == null) {
+                    res.send("No se encontró el posteo")
+                } else {
+                    res.render('detallePost', { posteo : result, userLogueado: true })
+                }
             })
-        }
-        
-
+            .catch(function(error) {
+                res.send(error)
+            })
     },
-
     agregarPosteo: function(req, res){
         res.render('agregarPost', {
          

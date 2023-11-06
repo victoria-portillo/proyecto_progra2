@@ -5,11 +5,13 @@
             <div class="post-detail container">
                 <section class="center main-content post">
                     <div class="info-usuario">
-                        <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
-                        <p><a href="/users/detalleUsuario">Laura Martinez</a></p>
+                         
                     </div>
-                    <% for (let i=0; i < listaId.length; i++) { %>
-                        <img class="photo" src="<%=listaId[i].imagenPosteo %>" alt="Paisajes">
+                    <% for (let i=0; i < posteo.length; i++) { %>
+                        <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
+                        <a href="/users/detalleUsuario/<%= posteo[i].usuario.idUsuario%> "><%= posteo[i].usuario.nombre %> 
+                        </p></a>
+                        <img class="photo"  src="<%= posteo.imagenPerfil %>" alt="<%= producto.descripcionPost %>">
                 </section>
                 <section class="right">
                     <h4>Comentarios</h4>
@@ -21,14 +23,14 @@
                         <div>
                             <div class="comment" >
                         
-                                <% for(let j=0; j < listaId[i].comentarios.length; j++){%>
+                                <% for(let j=0; j < posteo[i].comentarios.length; j++){%>
                                     <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
                                     <section>
-                                        <a class="user" href="/users/detalleUsuario">
-                                            <%=listaId[i].comentarios[j].usuario%>
+                                        <a href="/users/detalleUsuario/<%= posteo[i].usuario.idUsuario%> "><%= posteo[i].usuario.nombre %></p></a>
+                                            <%=posteo[i].comentarios[j].usuario%>
                                         </a>
                                         <span class="text">
-                                            <%=listaId[i].comentarios[j].comentario%>
+                                            <%=posteo[i].comentarios[j].comentario%>
                                         </span>
                                     </section>
                                     <%}%>
