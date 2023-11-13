@@ -1,40 +1,43 @@
-
 <%- include('./partials/head') %>
 
 
     <%- include('./partials/header') %>
 
-    <main>
-        <section class="center main-content">
-        <h1>Login</h1>
-       
-                    
-            <form action="/users/perfil" method="get">
-                     <div>
-                         <input type="text" name= "email" placeholder="Email">
+        <main>
+            <section class="center main-content">
+                <h1>Login</h1>
+
+
+                <form action="/users/login" method="post">
+
+                    <% if (locals.errores) { %>
+                        <p> <%= errores.message %></p>
+                       <% } %>
+                    <div>
+                        <input type="text" name="email" placeholder="Email">
                     </div>
                     <div>
-                         <input type="password" name= "contrasenia" placeholder="contraseña">
+                        <input type="password" name="contrasenia" placeholder="contraseña">
                     </div>
+                    <input type="checkbox" id="recordarClave" name="recordarClave">
+                    <label for="recordarClave">Recordar clave</label>
                     <div>
 
-                    <input type="submit" value="ingresar">
-                </div>
+                        <input type="submit" value="ingresar"> 
 
-            </form>
-        
-            <p>
-             ¿Aun no tienes una cuenta?
-             <a href="/users/registrar">Crear cuenta</a>
-        
-            </p>
-        
-        
-            <%- include('./partials/footer') %> 
+                    </div>
+
+                </form>
 
 
+                <p>
+                    ¿Aun no tienes una cuenta?
+                    <a href="/users/registrar">Crear cuenta</a>
+
+                </p>
 
 
+                <%- include('./partials/footer') %>
 
 
 
@@ -46,12 +49,16 @@
 
 
 
-        </section>
-    </main>
-
-    <%- include('./partials/footer') %> 
 
 
-</body>
 
-</html>
+
+            </section>
+        </main>
+
+        <%- include('./partials/footer') %>
+
+
+            </body>
+
+            </html>

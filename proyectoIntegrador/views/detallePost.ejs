@@ -4,10 +4,10 @@
         <main>
             <div class="post-detail container">
                 <section class="center main-content post">
-                   <% for (let i=0; i < posteo.length; i++) { %>
+                  
                         <div class="info-usuario"></div>
                         <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
-                        <a href="/users/detalleUsuario/<%= posteo[i].usuario.idUsuario%> "><%= posteo[i].usuario.nombre %> 
+                        <a href="/users/detalleUsuario/<%= posteo.usuario.idUsuario%> "><%= posteo.usuario.nombre %> 
                         </p></a>
                         
                     </div>
@@ -23,14 +23,15 @@
                         <div>
                             <div class="comment" >
                         
-                                <% for(let j=0; j < posteo[i].comentarios.length; j++){%>
+                                <% for(let i=0; i < posteo.comentarios.length; i++){%>
+
                                     <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
                                     <section>
-                                        <a href="/users/detalleUsuario/<%= posteo[i].usuario.idUsuario%> "><%= posteo[i].usuario.nombre %></p></a>
-                                            <%=posteo[i].comentarios[j].usuario%>
+                                        <a href="/users/detalleUsuario/<%= posteo.usuario.idUsuario%> "><%= posteo.comentarios[i].usuario.nombre %></p></a>
+                                            <%=posteo.comentarios[i].usuario%>
                                         </a>
                                         <span class="text">
-                                            <%=posteo[i].comentarios[j].comentario%>
+                                            <%=posteo.comentarios[i].comentario%>
                                         </span>
                                     </section>
                                     <%}%>
@@ -44,7 +45,7 @@
 
                 </section>
                 
-                <% } %>
+               
             </div>
         </main>
 

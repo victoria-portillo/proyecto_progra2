@@ -10,7 +10,7 @@ const controller = {
    
     detalle: function (req, res) {
         let id = req.params.id;
-
+        console.log(id);
         let filtro = {
             include: [ {association: "usuario"}, {association: "comentarios", include: [{association: "usuario"}]} ]
         };
