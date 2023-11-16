@@ -11,7 +11,8 @@
                         </p></a>
                         
                     </div>
-                    <img class="photo"  src="<%= posteo.imagenPerfil %>" alt="<%= posteo.descripcionPost %>"> 
+                    <img class="photo"  src="<%= posteo.imagenPerfil %>"<%= posteo.descripcionPost %>> 
+                    <p><%= posteo.descripcionPost %></p>
                 </section>
                 <section class="right">
                     <h4>Comentarios</h4>
@@ -28,7 +29,7 @@
                                     <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
                                     <section>
                                         <a href="/users/detalleUsuario/<%= posteo.usuario.idUsuario%> "><%= posteo.comentarios[i].usuario.nombre %></p></a>
-                                            <%=posteo.comentarios[i].usuario%>
+                                          
                                         </a>
                                         <span class="text">
                                             <%=posteo.comentarios[i].comentario%>

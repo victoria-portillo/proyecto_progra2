@@ -35,15 +35,36 @@ const controller = {
       })
         
     },
-    buscarPosteo: function(req, res){
-        res.render('resultadoBusqueda', {
-            nombre: req.query.posteo,
-            
-            userLogueado: true,
-            posteos: datos.posteos,
+   
+    buscarPosteo: function (req, res) {
+        let busqueda = req.query.buscador;
 
-      
-      })
+        let filtro = {
+            include: {
+                all: true,
+                nested: true
+            },
+            where: [
+                {
+                    [op.or]: [
+                        { descripcionPost: { [op.like]: '%' + busqueda + '%' } },
+                        { imagenPerfil: { [op.like]: '%' + busqueda + '%' } }
+                    ]
+                }
+            ],
+            order: [["createdAt", "DESC"]]
+        }
+        posteos.findAll(filtro)
+            .then((result) => {
+                return res.render("resultadoBusqueda", {
+                    busqueda: busqueda,
+                    posteos: result
+                })
+
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     },
 
     funcionAgregar: function(req, res){
