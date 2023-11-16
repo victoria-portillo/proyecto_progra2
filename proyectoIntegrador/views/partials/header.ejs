@@ -17,7 +17,13 @@
                     <li><a href="/"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="/posteos/agregar"><i class="fa-regular fa-square-plus"></i></a></li>
                     <li><a href="/users/perfil"><i class="fa-regular fa-user"></i></a></li>
-                    <li><a href="/users/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                    <li>
+                        <form action="/users/logout" method="post">
+                            <button class="logout" type="submit">
+                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </button>
+                        </form>
+                    </li>
                 </ul>
             </div>
             

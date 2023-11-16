@@ -157,10 +157,14 @@ loginPost: function (req, res) {
   },
 
  
-
   logout: function (req, res) {
-
-  },
+    req.session.destroy();
+    //Eliminar cookie si existe.
+    if (req.cookies.idUsuario !== undefined) {
+        res.clearCookie('idUsuario')
+    }
+    return res.redirect('/');
+},
 
   perfilEditarPost: function (req, res) {
 

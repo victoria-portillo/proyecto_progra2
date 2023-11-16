@@ -29,10 +29,10 @@
 
           <div class="post-comentarios">
               <h4>Comentarios</h4>
-                <% for(let j=0; j < posteosFiltro[j].comentarios.length; j++){%> 
+                <% for(let j=0; j < posteosFiltro[i].comentarios.length; j++){%> 
               <ul>
                   <li>
-                      <a href="/users/detalleUsuario"> <%=posteosFiltro[i].comentarios[j].usuario%></a>
+                    <a href="/users/detalleUsuario/<%=posteosFiltro[i].comentarios[j].usuario.idUsuario %> "><%= posteosFiltro[i].comentarios[j].usuario.nombre %></p></a>
                       <span><%=posteosFiltro[i].comentarios[j].comentario%></span>
                   </li>
                   
@@ -48,6 +48,6 @@
 <!-- Hasta aca -->
     
 
-<%- include('./partials/footer') %> 
+<%- include('./partials/footer') %>
 
 
