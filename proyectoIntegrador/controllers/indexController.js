@@ -14,7 +14,7 @@ index: function(req, res){
     posteos.findAll(filtro)
     .then(function(result){
         // res.send(result)
-        res.render('index', { posteosFiltro : result, userLogueado: false
+        res.render('index', { posteosFiltro : result
         }, 
         )
     })

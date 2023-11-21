@@ -60,11 +60,38 @@ loginPost: function (req, res) {
   },
 
   miPerfil: function (req, res) {
-    res.render('miPerfil', {
-      posteos: data.posteos,
-      userLogueado: true
-    })
-  },
+    let userId
+    if (req.params.id) {
+        userId = req.params.id
+    } else {
+        if (req.session.user) {
+            userId = req.session.user.id
+        } else {
+            res.send("Faltan parámetros en tu busqueda.")
+        }
+    }
+
+    let filtro = {
+        include: {all: true, nested : true},
+        order: [
+            ['posteos', 'createdAt', 'DESC']
+        ]
+    }
+
+    usuarios.findByPk(userId, filtro)
+        .then(function(usuario) {
+            if (usuario) {
+                usuario.clave = undefined
+                res.render('miPerfil', {usuario : usuario})
+            } else {
+                res.send("Usuario inexistente.")
+            }
+        })
+        .catch(function(error) {
+            res.send(error)
+        })
+
+},
 
   perfilEditar: function (req, res) {
     res.render('editarPerfil', {

@@ -12,6 +12,7 @@ router.get('/busqueda', controller.buscarPosteo)
 // // FUNCIONALIDAD ASOCIADA A LA VISTA DE AGREGAR Posteo
 router.post('/agregar', controller.funcionAgregar)
 
+
 // // FUNCIONALIDADES ASOCIADAS AL DETALLE DE UN Posteo
 router.post('/comentar', controller.funcionComentar)
 router.post('/borrar', controller.funcionBorrar)

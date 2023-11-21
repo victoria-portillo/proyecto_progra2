@@ -67,9 +67,34 @@ const controller = {
             })
     },
 
-    funcionAgregar: function(req, res){
+    funcionAgregar: function (req, res) {
+        let posteoNuevo = {}
+
+        if ( req.body.imagenPosteo === "" ) {
+            res.send("No puede quedar vacío el campo de imagen")
+        } else {
+            posteoNuevo.imagenPerfil = req.body.imagenPosteo
+        }
+
+        if ( req.body.descripcionPosteo === "" ) {
+            res.send("No puede quedar vacío el campo de descripción")
+        } else {
+            posteoNuevo.descripcionPost = req.body.descripcionPosteo
+        }
+
+        posteoNuevo.idUsuario = req.session.user.id
+
+        posteos.create( posteoNuevo)
+            .then(function(resultado) {
+                res.redirect("/posteos/detalle/" + resultado.id)
+            })
+            .catch(function(error) {
+                res.send(error)
+            })
 
     },
+
+
 
     funcionComentar: function(req, res){
         
