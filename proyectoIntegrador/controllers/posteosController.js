@@ -98,11 +98,36 @@ const controller = {
 
     funcionComentar: function(req, res){
         
+    },funcionBorrar: function (req, res) {
+        if (req.session.user) {
+            posteos.findByPk( req.params.id )
+                .then(function(resultado) {
+                    if (resultado) {
+                        if (resultado.idUsuario === req.session.id) {
+                            let filtro = {
+                                where : req.params.id
+                            }
+                            posteos.destroy(filtro)
+                                .then(function(resultado) {
+                                    res.redirect("/")
+                                })
+                                .catch(function(error) {
+                                    res.send(error)
+                                })
+                        } else {
+                            res.send("No puede eliminar este posteo")
+                        }
+                    } else {
+                        res.send("Posteo no encontrado")
+                    }
+                })
+                .catch(function(error) {
+                    res.send(error)
+                })
+        } else {
+            res.send("No puede eliminar este posteo")
+        }
     },
-
-    funcionBorrar: function(req, res){
-        
-    }
 
     }
     
