@@ -416,3 +416,7 @@ main {
     max-width: 100%; /* Ajustar el tamaño máximo de las imágenes al contenedor */
     height: auto; /* Mantener la proporción de aspecto */
   }
+
+  .edit-product-container {
+    margin-top: 200px; /* Ajusta este valor según sea necesario */
+}

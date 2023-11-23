@@ -9,12 +9,17 @@
                         <a href="/users/detalleUsuario/<%= posteo.usuario.idUsuario%> ">
                             <%= posteo.usuario.nombre %>
                         </a>
-                        <a href="/posteos/editar/<%= posteo.id%>">Editar</a>
-                        <% if (locals.errores) { %>
-                            <p> <%= errores.message %></p>
-                           <% } %>
+                        <!-- Vista 'detallePost' -->
+                     
                     </div>
+                    <a href="/posteos/editar/<%= posteo.id%>">EDITAR POSTEO</a>
+                       
 
+                    <% if (locals.errores) { %>
+                        <p>
+                            <%= errores.message %>
+                        </p>
+                        <% } %>
                     <img class="photo" src="<%= posteo.imagenPerfil %>" <%=posteo.descripcionPost %>>
                     <p>
                         <%= posteo.descripcionPost %>
@@ -23,8 +28,10 @@
                 <section class="right">
                     <h4>Comentarios</h4>
                     <section class="comments">
-                        <form action="" class="comment-form">
-                            <input type="text" class="input" placeholder="Agregar comentario">
+                        <form action="/posteos/comentar" class="comment-form" class="form" method="POST">
+                            <input type="hidden" name="idPost" value="<%= posteo.id %>">
+                            <input class="form-input" name="comentario" type="text" value=""
+                                placeholder="Agregar comentario">
                             <button type="submit">Comentar</button>
                         </form>
                         <div>
@@ -46,14 +53,11 @@
                                     </section>
                                     <%}%>
 
-                                    <form class="form" action="/posteos/comentar" method="POST">
-                                        <input class="form-input" name="comentario" type="text" value="" placeholder="Agregar comentario">
-                                        <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-                                    </form>
+                                      
 
                             </div>
                     </section>
-                    
+
 
                     <div>
                     </div>

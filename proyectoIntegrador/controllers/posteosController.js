@@ -87,6 +87,7 @@ const controller = {
 
     },
 
+  
     funcionEditar: function (req,res) {
         let id = req.params.id
         let filtro = {
@@ -127,38 +128,37 @@ const controller = {
     },
 
     funcionComentar: function (req, res) {
-            if (req.session.user) {
-                let comentarioNuevo = {
-                    idUsuario : req.session.user.id,
-                    idPost : req.params.id,
-                }
-    
-                if ( req.body.comentario === "" ) {
-                    res.send("No puede quedar vacío el campo de comentario")
-                } else {
-                    comentarioNuevo.comentario = req.body.comentario
-                }
-    
-                comentario.create(comentarioNuevo)
-                    .then(function(resultado) {
-                        res.redirect("/posteos/detalle/" + req.params.id)
-                    })
-                    .catch(function(error) {
-                        res.send(error)
-                    })
-    
-            } else {
-    
-                res.locals.error = "No puede comentar si no está logueado"
-                res.render('detallePost')
-    
+        if (req.session.user) {
+            let comentarioNuevo = {
+                idUsuario: req.session.user.id,
+                idPost: req.body.idPost,  
             };
+    
+            if (req.body.comentario === "") {
+                res.send("No puede quedar vacío el campo de comentario");
+            } else {
+                comentarioNuevo.comentario = req.body.comentario;
+            }
+    
+            comentario.create(comentarioNuevo)
+                .then(function (resultado) {
+                    res.redirect("/posteos/detalle/" + req.body.idPost);
+                })
+                .catch(function (error) {
+                    res.send(error);
+                });
+        } else {
+            res.locals.error = "No puede comentar si no está logueado";
+            res.render('detallePost');  //
+        }
+    }
+    
         
     
 
 
    
-}}
+}
 
 
 
