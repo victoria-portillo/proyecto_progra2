@@ -26,4 +26,7 @@ router.get('/perfil/:id?', controller.miPerfil)
 router.get('/editarPerfil/:id', controller.perfilEditar);
 router.post('/editarPerfil/:id', controller.perfilEditarPost);
 
+
+
+
 module.exports = router;

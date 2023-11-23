@@ -7,35 +7,28 @@ const comentario = db.Comentario;
 
 
 const controller = {
-   
+
     detalle: function (req, res) {
         let id = req.params.id;
         console.log(id);
         let filtro = {
-            include: [ {association: "usuario"}, {association: "comentarios", include: [{association: "usuario"}]} ]
+            include: [{ association: "usuario" }, { association: "comentarios", include: [{ association: "usuario" }] }]
         };
 
         posteos.findByPk(id, filtro)
-            .then(function(result) {
+            .then(function (result) {
                 if (result == null) {
                     res.send("No se encontró el posteo")
                 } else {
-                    res.render('detallePost', { posteo : result, userLogueado: true })
+                    res.render('detallePost', { posteo: result, userLogueado: true })
                 }
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 res.send(error)
             })
     },
-    agregarPosteo: function(req, res){
-        res.render('agregarPost', {
-         
-            userLogueado: true
-      
-      })
-        
-    },
-   
+    
+
     buscarPosteo: function (req, res) {
         let busqueda = req.query.buscador;
 
@@ -70,13 +63,13 @@ const controller = {
     funcionAgregar: function (req, res) {
         let posteoNuevo = {}
 
-        if ( req.body.imagenPosteo === "" ) {
+        if (req.body.imagenPosteo === "") {
             res.send("No puede quedar vacío el campo de imagen")
         } else {
             posteoNuevo.imagenPerfil = req.body.imagenPosteo
         }
 
-        if ( req.body.descripcionPosteo === "" ) {
+        if (req.body.descripcionPosteo === "") {
             res.send("No puede quedar vacío el campo de descripción")
         } else {
             posteoNuevo.descripcionPost = req.body.descripcionPosteo
@@ -84,51 +77,93 @@ const controller = {
 
         posteoNuevo.idUsuario = req.session.user.id
 
-        posteos.create( posteoNuevo)
-            .then(function(resultado) {
+        posteos.create(posteoNuevo)
+            .then(function (resultado) {
                 res.redirect("/posteos/detalle/" + resultado.id)
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 res.send(error)
             })
 
     },
 
+    funcionEditar: function (req,res) {
+        let id = req.params.id
+        let filtro = {
+            include: [{
+              all: true,
+              nested: true
+            }]
+          }; 
 
+          let errores = {}
 
-    funcionComentar: function(req, res){
-        
-    },funcionBorrar: function (req, res) {
-        if (req.session.user) {
-            posteos.findByPk( req.params.id )
-                .then(function(resultado) {
-                    if (resultado) {
-                        if (resultado.idUsuario === req.session.id) {
-                            let filtro = {
-                                where : req.params.id
-                            }
-                            posteos.destroy(filtro)
-                                .then(function(resultado) {
-                                    res.redirect("/")
-                                })
-                                .catch(function(error) {
-                                    res.send(error)
-                                })
-                        } else {
-                            res.send("No puede eliminar este posteo")
-                        }
-                    } else {
-                        res.send("Posteo no encontrado")
-                    }
-                })
-                .catch(function(error) {
-                    res.send(error)
-                })
-        } else {
-            res.send("No puede eliminar este posteo")
-        }
+        posteos.findByPk(id, filtro)
+        .then((result) => {
+            if (req.session.user && req.session.user.id === result.idUsuario){
+                return res.render("editarPosteo", {posteo:result});
+             } else {
+                errores.message = "Este posteo no le pertenece, no tiene permiso para editarlo"
+                res.locals.errores = errores
+                return res.render('detallePost', {posteo:result});
+        }}).catch((err) => {
+            console.log("Error encontrado" + err)
+        });
+     },
+
+     funcionGuardar: function (req,res) {
+        let info = req.body
+        let id = req.params.id
+        filtro = { where :[{id : id}]}
+
+        posteos.update(info,filtro)
+        .then((result) => {
+            return res.redirect("/posteos/detalle/" + id)
+        }).catch((err) => {
+            console.log(err)
+            
+        })
+
     },
 
-    }
+    funcionComentar: function (req, res) {
+            if (req.session.user) {
+                let comentarioNuevo = {
+                    idUsuario : req.session.user.id,
+                    idPost : req.params.id,
+                }
     
-    module.exports = controller
+                if ( req.body.comentario === "" ) {
+                    res.send("No puede quedar vacío el campo de comentario")
+                } else {
+                    comentarioNuevo.comentario = req.body.comentario
+                }
+    
+                comentario.create(comentarioNuevo)
+                    .then(function(resultado) {
+                        res.redirect("/posteos/detalle/" + req.params.id)
+                    })
+                    .catch(function(error) {
+                        res.send(error)
+                    })
+    
+            } else {
+    
+                res.locals.error = "No puede comentar si no está logueado"
+                res.render('detallePost')
+    
+            };
+        
+    
+
+
+   
+}}
+
+
+
+
+
+
+
+module.exports = controller

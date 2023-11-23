@@ -5,18 +5,22 @@ const controller = require('../controllers/posteosController')
 
 
 router.get('/detalle/:id', controller.detalle)
-router.get('/agregar', controller.agregarPosteo)
+
 router.get('/busqueda', controller.buscarPosteo)
+
+router.post('/comentar', controller.funcionComentar)
 
 
 // // FUNCIONALIDAD ASOCIADA A LA VISTA DE AGREGAR Posteo
 router.post('/agregar', controller.funcionAgregar)
 
 
-// // FUNCIONALIDADES ASOCIADAS AL DETALLE DE UN Posteo
-router.post('/comentar', controller.funcionComentar)
-router.post('/borrar', controller.funcionBorrar)
 
+
+// // FUNCIONALIDAD ASOCIADA A LA VISTA DE EDITAR PRODUCTO
+
+router.get("/editar/:id", controller.funcionEditar); 
+router.post("/editar/:id", controller.funcionGuardar); 
 
 
 module.exports = router
