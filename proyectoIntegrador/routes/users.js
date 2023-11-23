@@ -6,7 +6,7 @@ const controller = require('../controllers/usersController')
 
 //Detalle usuario
 
-router.get('/detalleUsuario', controller.usuarioDetalle)
+
 
 // REGISTER
 router.get('/registrar', controller.registro); 
@@ -21,6 +21,7 @@ router.post('/logout', controller.logout);
 
 //PROFILE
 router.get('/perfil/:id?', controller.miPerfil)
+router.get('/detalleUsuario/:id?', controller.detalleUsuario)
 
 //EDIT
 router.get('/editarPerfil/:id', controller.perfilEditar);

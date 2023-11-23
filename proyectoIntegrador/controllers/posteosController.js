@@ -60,16 +60,22 @@ const controller = {
             })
     },
 
+    agregarPosteo: function(req, res){
+        res.render('agregarPost')
+        
+    },
+   
+
     funcionAgregar: function (req, res) {
         let posteoNuevo = {}
 
-        if (req.body.imagenPosteo === "") {
+        if ( req.body.imagenPosteo === "" ) {
             res.send("No puede quedar vacío el campo de imagen")
         } else {
             posteoNuevo.imagenPerfil = req.body.imagenPosteo
         }
 
-        if (req.body.descripcionPosteo === "") {
+        if ( req.body.descripcionPosteo === "" ) {
             res.send("No puede quedar vacío el campo de descripción")
         } else {
             posteoNuevo.descripcionPost = req.body.descripcionPosteo
@@ -77,16 +83,15 @@ const controller = {
 
         posteoNuevo.idUsuario = req.session.user.id
 
-        posteos.create(posteoNuevo)
-            .then(function (resultado) {
+        posteos.create( posteoNuevo)
+            .then(function(resultado) {
                 res.redirect("/posteos/detalle/" + resultado.id)
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 res.send(error)
             })
 
     },
-
   
     funcionEditar: function (req,res) {
         let id = req.params.id
@@ -151,7 +156,41 @@ const controller = {
             res.locals.error = "No puede comentar si no está logueado";
             res.render('detallePost');  //
         }
-    }
+    },
+
+    funcionBorrar: (req, res) => {
+        let id = req.params.id;
+        let info = req.body
+        let posteo = {
+            idUsuario : info.idUsuario
+        }
+    
+        if (req.session.user.id == posteo.idUsuario) {
+            // Elimina los comentarios relacionados con el posteo
+            comentario.destroy({
+                where: {
+                    idPost: id
+                }
+            }).then(() => {
+                // Ahora, puedes eliminar el posteo
+                posteos.destroy({
+                    where: {
+                        id: id
+                    }
+                }).then(() => {
+                    return res.redirect('/');
+                }).catch((err) => {
+                    res.send(err);
+                });
+            }).catch((err) => {
+                res.send(err);
+            });
+        } else {
+        
+            return res.redirect('/users/login');
+        }
+    },
+    
     
         
     

@@ -101,13 +101,25 @@ loginPost: function (req, res) {
     })
   },
 
-  usuarioDetalle: function (req, res) {
+  detalleUsuario: function (req, res) {
+    let id = req.params.id;
+    console.log(id);
+    let filtro = {
+        include: [{ association: "posteos" }]
+    };
 
-    res.render('detalleUsuario', {
-      posteos: data.posteos,
-      userLogueado: true
-    })
-  },
+    usuarios.findByPk(id, filtro)
+        .then(function (result) {
+            if (result == null) {
+                res.send("No se encontró el usuario")
+            } else {
+                res.render('detalleUsuario', { usuario: result })
+            }
+        })
+        .catch(function (error) {
+            res.send(error)
+        })
+},
 
   guardar: function (req, res) {
 

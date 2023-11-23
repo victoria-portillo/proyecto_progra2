@@ -12,8 +12,13 @@ router.post('/comentar', controller.funcionComentar)
 
 
 // // FUNCIONALIDAD ASOCIADA A LA VISTA DE AGREGAR Posteo
-router.post('/agregar', controller.funcionAgregar)
 
+router.post('/agregar', controller.funcionAgregar)
+router.get('/agregar', controller.agregarPosteo)
+
+
+
+router.post("/borrar/:id", controller.funcionBorrar)
 
 
 

@@ -17,6 +17,7 @@
                     <li><a href="/"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="/posteos/agregar"><i class="fa-regular fa-square-plus"></i></a></li>
                     <li><a href="/users/perfil"><i class="fa-regular fa-user"></i></a></li>
+                    <li>Bienvenido <%=locals.user.nombre%>
                     <li>
                         <form action="/users/logout" method="post">
                             <button class="logout" type="submit">
