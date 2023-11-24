@@ -33,7 +33,7 @@
                 <% for(let j=0; j < posteosFiltro[i].comentarios.length; j++){%> 
               <ul>
                   <li>
-                    <a href="/users/detalleUsuario/<%=posteosFiltro[i].comentarios[j].usuario.idUsuario %> "><%= posteosFiltro[i].comentarios[j].usuario.nombre %></p></a>
+                    <a href="/users/detalleUsuario/<%=posteosFiltro[i].comentarios[j].usuario.id %> "><%= posteosFiltro[i].comentarios[j].usuario.nombre %></p></a>
                       <span><%=posteosFiltro[i].comentarios[j].comentario%></span>
                   </li>
                   

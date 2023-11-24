@@ -6,7 +6,7 @@
 
                     <div class="info-usuario">
                         <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
-                        <a href="/users/detalleUsuario/<%= posteo.usuario.idUsuario%> ">
+                        <a href="/users/detalleUsuario/<%= posteo.usuario.id%> ">
                             <%= posteo.usuario.nombre %>
                         </a>
 
@@ -46,7 +46,7 @@
 
                                     <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
                                     <section>
-                                        <a href="/users/detalleUsuario/<%= posteo.usuario.idUsuario%> ">
+                                        <a href="/users/detalleUsuario/<%= posteo.comentarios[i].usuario.id %>">
                                             <%= posteo.comentarios[i].usuario.nombre %>
                                                 </p>
                                         </a>
