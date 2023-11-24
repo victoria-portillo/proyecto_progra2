@@ -5,7 +5,7 @@
                 <section class="center main-content post">
 
                     <div class="info-usuario">
-                        <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
+                        <img src="<%=posteo.usuario.fotoDePerfil%>" alt="imagen Usuario">
                         <a href="/users/detalleUsuario/<%= posteo.usuario.id%> ">
                             <%= posteo.usuario.nombre %>
                         </a>
@@ -44,7 +44,7 @@
 
                                 <% for(let i=0; i < posteo.comentarios.length; i++){%>
 
-                                    <img src="/img/imagenUsuario.jpeg" alt="imagen Usuario">
+                                    <img src="<%=posteo.comentarios[i].usuario.fotoDePerfil%>" alt="imagen Usuario">
                                     <section>
                                         <a href="/users/detalleUsuario/<%= posteo.comentarios[i].usuario.id %>">
                                             <%= posteo.comentarios[i].usuario.nombre %>

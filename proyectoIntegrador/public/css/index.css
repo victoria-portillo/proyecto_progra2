@@ -102,6 +102,8 @@ main {
     
 }
 
+
+
 .main-content {
     max-width: 470px;
 }
@@ -117,6 +119,7 @@ main {
 }
 .post-body img {
     width: 100%;
+    
 }
 .info-usuario,
 .post-reacciones,

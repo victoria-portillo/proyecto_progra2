@@ -16,6 +16,17 @@ const controller =
 loginPost: function (req, res) {
   let errores = {}
 
+  if (req.body.email == '') {
+    errores.message = "Debe completar el email"
+    res.locals.errores = errores
+    return res.render('login'); 
+  } else if (req.body.contrasenia == '') {
+    errores.message = "La contraseña es obligatoria"
+    res.locals.errores = errores
+    return res.render('login');}
+
+    
+
   usuarios.findOne({
       where: [{
           email: req.body.email
@@ -56,6 +67,80 @@ loginPost: function (req, res) {
       return res.redirect('/')
     } else {
       return res.render('registracion')
+    }
+  },
+
+  guardar: function (req, res) {
+
+    let errores = {}
+
+    if (req.body.nombreUsuario == '') {
+      errores.message = "Debe completar el nombre de usuario"
+      res.locals.errores = errores
+      return res.render('registracion');
+    } else if (req.body.email == '') {
+      errores.message = "El email es obligatorio"
+      res.locals.errores = errores
+      return res.render('registracion');
+    } else if (req.body.contrasenia == '') {
+      errores.message = "Se necesita contraseña"
+      res.locals.errores = errores
+      return res.render('registracion');
+    } else if (req.body.contrasenia.length < 3) {
+      errores.message = "La contraseña tiene que tener al menos 3 caracteres"
+      res.locals.errores = errores
+      return res.render('registracion');
+    } else {
+      usuarios.findOne({
+        where: [{
+          email: req.body.email
+        }]
+      })
+        .then(function (user) {
+          if (user !== null) {
+            errores.message = "Ese correo ya existe, por favor ingresar otro"
+            res.locals.errores = errores
+            return res.render('registracion');
+          } else {
+            usuarios.findOne({
+              where: [{
+                nombre: req.body.nombreUsuario
+              }]
+            })
+              .then(function (user) {
+                if (user !== null) {
+                  errores.message = "Ese nombre de usuario ya existe, elija otro"
+                  res.locals.errores = errores
+                  return res.render('registracion');
+                } else {
+                  let user = {
+                    email: req.body.email,
+                    nombre: req.body.nombreUsuario,
+                    clave: bcrypt.hashSync(req.body.contrasenia, 10),
+                    fecha: req.body.fechaNacimiento,
+                    dni: req.body.dni,
+                    fotoDePerfil: req.body.fotoPerfil
+                  }
+                  usuarios.create(user)
+                    .then(function (respuesta) {
+                      return res.redirect('/')
+                    })
+                    .catch(error => {
+                      console.log(error)
+           
+                   })
+                }
+              })
+              .catch(error => {
+                console.log(error)
+     
+     res.send(error)         })
+          }
+        })
+        .catch(error => {
+          console.log(error)
+          res.send(error)
+        })
     }
   },
 
@@ -204,79 +289,7 @@ perfilEditarPost: function (req, res) {
         })
 },
 
-  guardar: function (req, res) {
-
-    let errores = {}
-
-    if (req.body.nombreUsuario == '') {
-      errores.message = "Debe completar el nombre de usuario"
-      res.locals.errores = errores
-      return res.render('registracion');
-    } else if (req.body.email == '') {
-      errores.message = "El email es obligatorio"
-      res.locals.errores = errores
-      return res.render('registracion');
-    } else if (req.body.contrasenia == '') {
-      errores.message = "Se necesita contraseña"
-      res.locals.errores = errores
-      return res.render('registracion');
-    } else if (req.body.contrasenia.length < 3) {
-      errores.message = "La contraseña tiene que tener al menos 3 caracteres"
-      res.locals.errores = errores
-      return res.render('registracion');
-    } else {
-      usuarios.findOne({
-        where: [{
-          email: req.body.email
-        }]
-      })
-        .then(function (user) {
-          if (user !== null) {
-            errores.message = "Ese correo ya existe, por favor ingresar otro"
-            res.locals.errores = errores
-            return res.render('registracion');
-          } else {
-            usuarios.findOne({
-              where: [{
-                nombre: req.body.nombreUsuario
-              }]
-            })
-              .then(function (user) {
-                if (user !== null) {
-                  errores.message = "Ese nombre de usuario ya existe, elija otro"
-                  res.locals.errores = errores
-                  return res.render('registracion');
-                } else {
-                  let user = {
-                    email: req.body.email,
-                    nombre: req.body.nombreUsuario,
-                    clave: bcrypt.hashSync(req.body.contrasenia, 10),
-                    fecha: req.body.fechaNacimiento,
-                    dni: req.body.dni,
-                    fotoDePerfil: req.body.fotoPerfil
-                  }
-                  usuarios.create(user)
-                    .then(function (respuesta) {
-                      return res.redirect('/')
-                    })
-                    .catch(error => {
-                      console.log(error)
-           
-                   })
-                }
-              })
-              .catch(error => {
-                console.log(error)
-     
-     res.send(error)         })
-          }
-        })
-        .catch(error => {
-          console.log(error)
-          res.send(error)
-        })
-    }
-  },
+  
 
  
   logout: function (req, res) {

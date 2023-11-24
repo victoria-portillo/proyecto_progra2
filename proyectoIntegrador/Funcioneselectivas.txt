@@ -1,0 +1,9 @@
+Las funciones electivas que hicimos son:
+
+Editar datos del usuario
+
+Recordar usuario
+
+Imagen de Perfil
+
+Validaciones interactivas

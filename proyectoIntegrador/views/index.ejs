@@ -5,7 +5,7 @@
       <article class="post">
         <% for(let i=0; i < posteosFiltro.length; i++){%>
           <div class="info-usuario ">
-              <img src="/img/imagenUsuario.jpeg" alt="usuario">
+              <img src="<%=posteosFiltro[i].usuario.fotoDePerfil%>" alt="usuario">
               <h4>
                 <a href="/users/detalleUsuario/<%= posteosFiltro[i].usuario.id%> "><%= posteosFiltro[i].usuario.nombre %></p></a>
               <!-- PREGUNTAR AGREGAR NOMBRE AL MODELO USUARIO Y CAMBIAR EL .ID -->
@@ -37,7 +37,7 @@
                       <span><%=posteosFiltro[i].comentarios[j].comentario%></span>
                   </li>
                   
-                  <a href="/users/detalleUsuario">Ver más...</a>
+                 
               </ul>
           </div>
       </article>
