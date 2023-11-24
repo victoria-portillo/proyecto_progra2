@@ -94,12 +94,95 @@ loginPost: function (req, res) {
 },
 
   perfilEditar: function (req, res) {
-    res.render('editarPerfil', {
+    if (req.session.user == undefined) {
+        return res.redirect('/')
+    } else {
 
-      userLogueado: true
+        let userId = req.params.id
+        
+        usuarios.findByPk(userId)
+            .then(function(usuario) {
+                if (usuario) {
+                    res.render('editarPerfil')
+                } else {
+                    res.send("Usuario no existe.")
+                }
+            })
+            .catch(function(error) {
+                res.send(error)
+            })
 
-    })
-  },
+    }
+},
+ 
+perfilEditarPost: function (req, res) {
+
+  let errores = {}
+  if (req.body.nombre == '') {
+      errores.message = "El nombre de usuario es obligatorio"
+      res.locals.errores = errores
+      return res.render('editarPerfil');
+  } else if (req.body.email == '') {
+      errores.message = "El email es obligatorio"
+      res.locals.errores = errores
+      return res.render('editarPerfil');
+  } else if (req.body.clave == '') {
+      errores.message = "La contraseña es obligatoria"
+      res.locals.errores = errores
+      return res.render('editarPerfil');
+  } else if (req.body.contraseniaNueva.length < 3) {
+      errores.message = "La contraseña tiene que tener al menos 3 caracteres"
+      res.locals.errores = errores
+      return res.render('editarPerfil');
+  } else if (req.body.clave == '') {
+      errores.message = "Escriba su contraseña anterior"
+      res.locals.errores = errores
+      return res.render('editarPerfil');
+  } else {
+      usuarios.findOne({
+          where: [{
+              email: req.body.email
+          }]
+      })
+          .then(function (user) {
+              if (user) {
+                  //chequear que la contrasena anterior es correcta 
+                  let compare = bcrypt.compareSync(req.body.clave, user.clave)
+                  if (compare) {
+                      let user = {
+                          id: req.body.id,
+                          email: req.body.email,
+                          nombre: req.body.nombre,
+                          clave: bcrypt.hashSync(req.body.contraseniaNueva, 10), //vamos a hashear la contrasena que viene del form
+                          fecha: req.body.fecha,
+                          dni: req.body.dni,
+                          fotoDePerfil: req.body.fotoDePerfil
+                      }
+                      usuarios.update(user, {
+                          where: [{
+                              id: req.body.id
+                          }]
+                      })
+                          .then(function (user) {
+                              return res.redirect('/')
+                          })
+                          .catch(error => console.log(error))
+                  } else {
+                      errores.message = "La contraseña anterior es incorrecta"
+                      res.locals.errores = errores
+                      return res.render('editarPerfil');
+                  }
+              } else {
+                  errores.message = "El mail nunca fue registrado"
+                  res.locals.errores = errores
+                  return res.render('registracion');
+              }
+          })
+          .catch(error => console.log(error))
+  }
+
+},
+
 
   detalleUsuario: function (req, res) {
     let id = req.params.id;
@@ -203,11 +286,9 @@ loginPost: function (req, res) {
         res.clearCookie('idUsuario')
     }
     return res.redirect('/');
-},
+}
 
-  perfilEditarPost: function (req, res) {
-
-  }
+ 
 
 
 
