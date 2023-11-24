@@ -11,17 +11,21 @@
         <h1>Editar perfil</h1>
 
         <form action="/users/editarPerfil/<%= user.id %>" method="POST">
+
+            <% if (locals.errores) { %>
+                <p> <%= errores.message %></p>
+               <% } %>
                     <div>
-                        <input type="text"  name="nombre" placeholder="Nombre de Usuario">
+                        <input type="text" value="<%= user.nombre %>" name="nombre" placeholder="Nombre de Usuario">
                     </div>
                     <div>
-                        <input type="email"  name= "email" placeholder="Email">
+                        <input type="email"  name= "email" value="<%= user.email%>" placeholder="Email">
                     </div>
                     <div>
-                        <input type="date" name= "fecha" placeholder="Fecha de nacimieno">
+                        <input type="date" name= "fecha" value="<%= user.fecha %>" placeholder="Fecha de nacimieno">
                     </div>
                     <div>
-                        <input type="number" name= "dni" placeholder="Dni">
+                        <input type="number" name= "dni" value="<%= user.dni %>" placeholder="Dni">
                     </div>
                     <div>
                         <input type="password"   name= "contraseniaNueva" placeholder=" Nuevo Password">
@@ -30,7 +34,7 @@
                         <input type="password"   name= "clave" placeholder="Password anterior">
                     </div>
                     <div>
-                        <input type="text"   name= "fotoDePerfil" placeholder="Foto de Perfil">
+                        <input type="text"   name= "fotoDePerfil" value="<%= user.fotoDePerfil %>" placeholder="Foto de Perfil">
                     </div>
                     <input type="hidden" name="id" value="<%= user.id %>">
                 <div>

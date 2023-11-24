@@ -4,38 +4,33 @@
 
 
         <main>
-            <div class="user-detail container">
+            <div class="mobile-search-results">
                 <h1>Resultados de búsqueda</h1>
-                <section class="bottom">
+                <section class="mobile-bottom">
                     <% if (posteos.length> 0) { %>
-                        <% for ( let i=0 ; i < posteos.length; i++) { %>
-                            <div>
+                        <% for (let i=0; i < posteos.length; i++) { %>
+                            <div class="mobile-post">
                                 <section>
-
-
                                     <figure>
-                                        <a href="/posteos/detalle/<%=posteos[i].id%>">
-                                            <img src="<%=posteos[i].imagenPerfil%>"
-                                                alt="Imagen de <%posteos[i].descripcionPost%>"> </a>
+                                        <a href="/posteos/detalle/<%= posteos[i].id %>">
+                                            <img src="<%= posteos[i].imagenPerfil %>"
+                                                alt="Imagen de <%= posteos[i].descripcionPost %>">
+                                        </a>
                                     </figure>
                                     <article>
-
-                                        <a href="/users/detalleUsuario/<%= posteos[i].usuario.idUsuario%>">
+                                        <a href="/users/detalleUsuario/<%= posteos[i].usuario.idUsuario %>">
                                             Subido por: <%= posteos[i].usuario.nombre %>
                                         </a>
-
                                     </article>
-
                                 </section>
                             </div>
                             <% } %>
                                 <% } else { %>
-                                    <h1>No encontramos coincidencias con tu busqueda</h1>
+                                    <h1>No encontramos coincidencias con tu búsqueda</h1>
                                     <% } %>
-
-
                 </section>
             </div>
+
 
 
 

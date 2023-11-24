@@ -271,6 +271,19 @@ main {
     border: 1px solid mediumaquamarine;
     border-radius: 5px;
     color: #fff;
+
+
+}
+
+.editar-post{
+
+    padding: 2px 0;
+    background-color:mediumseagreen;
+    border: 1px solid mediumaquamarine;
+    border-radius: 5px;
+    color: #fff;
+
+
 }
 .comment-form button:hover {
     cursor: pointer;
@@ -298,6 +311,8 @@ main {
     padding: 20px;
     width: 100%;
 }
+
+
 
 .user-detail .post{
    
@@ -420,3 +435,133 @@ main {
   .edit-product-container {
     margin-top: 200px; /* Ajusta este valor según sea necesario */
 }
+
+.user-detail {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px; /* Adjust as needed */
+    margin: 0 auto;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ccc; /* Example border color */
+}
+
+.foto-perfil {
+    border-radius: 50%;
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    margin-right: 20px;
+}
+
+.info-usuario {
+    flex-grow: 1;
+}
+
+.meta {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.meta li {
+    margin-right: 20px;
+    font-size: 14px;
+    color: #555; /* Example text color */
+}
+
+.user-posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+
+
+
+.post article {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333; /* Example text color */
+}
+
+
+.logout-btn {
+    border: 1px solid #777;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #777;
+    cursor: pointer;
+}
+
+.logout-btn i {
+    margin-right: 5px;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+    body {
+        padding-top: 200px; 
+    }
+
+  
+
+}
+
+.main-footer {
+    padding: 5px 2px;
+}
+
+.social,
+.team {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1px;
+}
+
+.social li,
+.team li {
+    margin: 1px 0;
+}
+
+.social a,
+.team li {
+    font-size: 14px;
+}
+
+.mobile-search-results {
+    padding: 10px;
+}
+
+.mobile-bottom {
+    padding: 10px;
+}
+
+.mobile-post {
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    color: #777;
+    padding: 10px;
+}
+
+.mobile-post figure {
+    margin-bottom: 10px;
+}
+
+.mobile-post img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.mobile-post article {
+    font-size: 14px;
+}
+

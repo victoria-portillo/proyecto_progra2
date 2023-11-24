@@ -14,19 +14,21 @@ const controller = {
         let filtro = {
             include: [{ association: "usuario" }, { association: "comentarios", include: [{ association: "usuario" }] }]
         };
-
+    
         posteos.findByPk(id, filtro)
             .then(function (result) {
                 if (result == null) {
                     res.send("No se encontró el posteo")
                 } else {
-                    res.render('detallePost', { posteo: result, userLogueado: true })
+                    
+                    res.render('detallePost', { posteo: result, userLogueado: req.session.user })
                 }
             })
             .catch(function (error) {
                 res.send(error)
             })
     },
+    
     
 
     buscarPosteo: function (req, res) {
@@ -93,29 +95,32 @@ const controller = {
 
     },
   
-    funcionEditar: function (req,res) {
-        let id = req.params.id
+    funcionEditar: function (req, res) {
+      
+        let id = req.params.id;
         let filtro = {
             include: [{
-              all: true,
-              nested: true
+                all: true,
+                nested: true
             }]
-          }; 
-
-          let errores = {}
-
+        };
+        let errores = {};
+    
         posteos.findByPk(id, filtro)
-        .then((result) => {
-            if (req.session.user && req.session.user.id === result.idUsuario){
-                return res.render("editarPosteo", {posteo:result});
-             } else {
-                errores.message = "Este posteo no le pertenece, no tiene permiso para editarlo"
-                res.locals.errores = errores
-                return res.render('detallePost', {posteo:result});
-        }}).catch((err) => {
-            console.log("Error encontrado" + err)
-        });
-     },
+            .then((result) => {
+                if (req.session.user && req.session.user.id === result.idUsuario) {
+                    return res.render("editarPosteo", { user: req.session.user, posteo: result });
+                } else {
+                    errores.message = "Este posteo no le pertenece, no tiene permiso para editarlo";
+                    return res.render('detallePost', { user: req.session.user, posteo: result, errores: errores });
+                }
+            })
+            .catch((err) => {
+                console.log("Error encontrado" + err);
+            });
+    },
+    
+    
 
      funcionGuardar: function (req,res) {
         let info = req.body
@@ -166,13 +171,13 @@ const controller = {
         }
     
         if (req.session.user.id == posteo.idUsuario) {
-            // Elimina los comentarios relacionados con el posteo
+            
             comentario.destroy({
                 where: {
                     idPost: id
                 }
             }).then(() => {
-                // Ahora, puedes eliminar el posteo
+          
                 posteos.destroy({
                     where: {
                         id: id

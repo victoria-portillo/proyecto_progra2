@@ -170,12 +170,12 @@ perfilEditarPost: function (req, res) {
                   } else {
                       errores.message = "La contraseña anterior es incorrecta"
                       res.locals.errores = errores
-                      return res.render('editarPerfil');
+                      return res.render('editarPerfil' , {errores : errores} );
                   }
               } else {
-                  errores.message = "El mail nunca fue registrado"
+                  errores.message = "El mail no se puede modificar"
                   res.locals.errores = errores
-                  return res.render('registracion');
+                  return res.render('editarPerfil');
               }
           })
           .catch(error => console.log(error))

@@ -9,18 +9,16 @@
                         <a href="/users/detalleUsuario/<%= posteo.usuario.idUsuario%> ">
                             <%= posteo.usuario.nombre %>
                         </a>
-                        <!-- Vista 'detallePost' -->
-                     
+
                     </div>
-                    <a href="/posteos/editar/<%= posteo.id%>">EDITAR POSTEO</a>
 
-
-                    <form action="/posteos/borrar/<%= posteo.id%>" class="comment-form" class="form" method="POST">
-                        <input type="hidden" name="idUsuario" value="<%=posteo.usuario.id%>">
-                        <button type="submit">Eliminar</button>
-
-                    </form>
-                       
+                        <% if (userLogueado && userLogueado.id === posteo.usuario.id) { %>
+                            <a href="/posteos/editar/<%= posteo.id %>" class="editar-post">Editar post</a>
+                            <form action="/posteos/borrar/<%= posteo.id %>" class="comment-form" method="POST">
+                                <input type="hidden" name="idUsuario" value="<%= posteo.usuario.id %>">
+                                <button type="submit">Eliminar</button>
+                            </form>
+                        <% } %>
 
                     <% if (locals.errores) { %>
                         <p>
